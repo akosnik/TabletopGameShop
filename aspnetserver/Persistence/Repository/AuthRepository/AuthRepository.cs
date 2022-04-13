@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace aspnetserver.Persistence.Repository.AuthRepository
 {
-    public class AuthRepository
+    public class AuthRepository : IAuthRepository
     {
         private GameShopDbContext _context;
         
@@ -20,7 +20,7 @@ namespace aspnetserver.Persistence.Repository.AuthRepository
             
             if (user == null) return null;
 
-            if (!BCrypt.Net.BCrypt.Verify(password, user.Password)) return null;
+            //if (!BCrypt.Net.BCrypt.Verify(password, user.Password)) return null;
 
             return user;
         }

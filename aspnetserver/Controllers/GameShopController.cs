@@ -14,7 +14,6 @@ namespace aspnetserver.Controllers
         public GameShopController(ILogger<GameShopController> logger)
         {
             _logger = logger;
-
         }
     }
 }
