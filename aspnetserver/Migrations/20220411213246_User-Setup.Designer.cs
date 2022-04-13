@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using aspnetserver.Persistence;
 
 namespace aspnetserver.Migrations
 {
     [DbContext(typeof(GameShopDbContext))]
-    partial class GameShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220411213246_User-Setup")]
+    partial class UserSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

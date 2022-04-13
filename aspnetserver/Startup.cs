@@ -1,4 +1,5 @@
 using aspnetserver.Persistence;
+using aspnetserver.Persistence.Repository.AuthRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -30,6 +31,15 @@ namespace aspnetserver
             {
                 configuration.RootPath = "ReactClient/build";
             });
+
+            services.AddAutoMapper(typeof(Startup));
+
+            //services.AddScoped<IAppRepository, AppRepository>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            //services.AddScoped<IUserReporsitory, UserRepository>();
+            //services.AddScoped<IOrderRepository, OrderRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
