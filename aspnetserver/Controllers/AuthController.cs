@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace aspnetserver.Controllers
@@ -26,29 +27,33 @@ namespace aspnetserver.Controllers
         public async Task<IActionResult> Login([FromBody] UserLoginDto userLogin)
         {
             var user = await _authRepository.Login(userLogin.Email, userLogin.Password);
+            
             if (user == null) return Unauthorized();
 
             return Ok(user);
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserRegisterDto userInfo)
+        public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegistration)
         {
             Console.WriteLine("Log");
-            if (await _authRepository.EmailExists(userInfo.Email))
+            if (await _authRepository.EmailExists(userRegistration.Email))
             {
-                ModelState.AddModelError("E-Mail", "E-Mail already exists");
+                ModelState.AddModelError("Email", "Email already exists");
             }
 
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             var newUser = new User
             {
-                FirstName = userInfo.FirstName,
-                LastName = userInfo.LastName,
-                Email = userInfo.Email,
-                Password = userInfo.Password,
-                ConfirmPassword = userInfo.ConfirmPassword,
+                FirstName = userRegistration.FirstName,
+                LastName = userRegistration.LastName,
+                Email = userRegistration.Email,
+                Password = userRegistration.Password,
+                ConfirmPassword = userRegistration.ConfirmPassword,
             };
 
             await _authRepository.Register(newUser);
