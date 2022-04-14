@@ -2,13 +2,14 @@ import './App.css';
 import RegisterForm from './Components/Auth/RegisterForm';
 import LoginForm from './Components/Auth/LoginForm';
 import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"
+import HomeNavbar from './Components/Nav/HomeNavbar';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        <HomeNavbar />
         <Switch>
           {/* <Route exact path='/'>
             

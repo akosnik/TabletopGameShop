@@ -1,58 +1,68 @@
 import axios from 'axios';
+import {Form, Button} from 'react-bootstrap'
 import React, { useState, useEffect } from 'react';
 
 function RegisterForm() {
 
-  const [FirstName, setFirstName] = useState('');
-  const [LastName, setLastName] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
-  const [ConfirmPassword, setConfirmPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setErrors] = useState('');
 
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const registerForm = { FirstName, LastName, Email, Password, ConfirmPassword}
+    const registerForm = { firstName, lastName, email, password, confirmPassword}
+    setErrors('');
 
     axios.post("http://localhost:8265/api/auth/register", registerForm)
       .then(res => {
-        console.log("Post response:", res)
+        console.log(res)
       })
       .catch(err => {
-        console.log("There was an error while posting:", err)
+        console.log("error:", err.response)
       })
   }
 
   return ( 
-    <form onSubmit={handleSubmit}>
-      <h1>Register</h1>
-      <div className="form-group">
-        <label htmlFor="FirstName">First Name</label>
-        <input className="input" type="text" name="FirstName" onChange={(e) => setFirstName(e.target.value)} />
-      </div>
+    <Form onSubmit={handleSubmit} className="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 mx-auto">
+    <h1 className='text-center'>Register</h1>
 
-      <div className="form-group">
-        <label htmlFor="LastName">Last Name</label>
-        <input type="text" name="LastName" onChange={(e) => setLastName(e.target.value)} />
-      </div>
+    <Form.Group className="mb-3" controlId="formBasicFirstName">
+      <Form.Label>First Name</Form.Label>
+      <Form.Control type="text" onChange={(e) => setFirstName(e.target.value)} />
+    </Form.Group>
 
-      <div className="form-group">
-        <label htmlFor="Email">Email</label>
-        <input type="text" name="Email" onChange={(e) => setEmail(e.target.value)} />
-      </div>
+    <Form.Group className="mb-3" controlId="formBasicLastName">
+      <Form.Label>Last Name</Form.Label>
+      <Form.Control type="text" onChange={(e) => setLastName(e.target.value)} />
+    </Form.Group>
 
-      <div className="form-group">
-        <label htmlFor="Password">Password</label>
-        <input type="text" name="Password" onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      
-      <div className="form-group">
-        <label htmlFor="ConfirmPassword">Confirm Password</label>
-        <input type="text" name="ConfirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Label>Email</Form.Label>
+      <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} />
+      <Form.Text className="text-muted">
+        We'll never share your email with anyone else.
+      </Form.Text>
+    </Form.Group>
+  
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Label>Password</Form.Label>
+      <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} />
+    </Form.Group>
+
+    <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+      <Form.Label>Confirm Password</Form.Label>
+      <Form.Control type="password" onChange={(e) => setConfirmPassword(e.target.value)} />
+    </Form.Group>
+  
+    <Button variant="primary" type="submit">
+      Submit
+    </Button>
+    </Form>
   );
 }
 
