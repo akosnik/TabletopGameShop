@@ -21,7 +21,7 @@ function LoginForm() {
       })
       .catch(err => {
         console.log("There was an error while posting:", err.response);
-        setErrors(err.response);
+        setErrors(err?.response?.data);
       })
   }
 
@@ -29,16 +29,14 @@ function LoginForm() {
   <Form onSubmit={handleSubmit} className="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 mx-auto">
   <h1 className='text-center'>Login</h1>
 
-  
-
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email</Form.Label>
-    <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} />
+    <Form.Control type="email" onChange={(e) => {setEmail(e.target.value); setErrors('');}} />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
-    <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} />
+    <Form.Control type="password" onChange={(e) => {setPassword(e.target.value); setErrors('');}} />
   </Form.Group>
 
   <Form.Group className="mb-3">

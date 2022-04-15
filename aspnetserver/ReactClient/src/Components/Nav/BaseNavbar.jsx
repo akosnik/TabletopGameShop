@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
-function HomeNavbar() {
+function BaseNavbar() {
   return (
 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
   <Container>
@@ -18,4 +18,4 @@ function HomeNavbar() {
   )
 }
 
-export default HomeNavbar
+export default BaseNavbar
