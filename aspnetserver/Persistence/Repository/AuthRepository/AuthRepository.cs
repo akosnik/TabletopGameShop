@@ -1,5 +1,4 @@
 ﻿using aspnetserver.Persistence.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
