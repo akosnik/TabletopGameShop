@@ -2,7 +2,7 @@ import axios from 'axios';
 import {Form, Button} from 'react-bootstrap'
 import React, { useState, useEffect } from 'react';
 
-export default RegisterForm = () => {
+function RegisterForm() {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -12,7 +12,7 @@ export default RegisterForm = () => {
   const [errors, setErrors] = useState('');
 
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
 
     const registerForm = { firstName, lastName, email, password, confirmPassword}
@@ -81,4 +81,4 @@ export default RegisterForm = () => {
   );
 }
 
-// export default RegisterForm;
+export default RegisterForm;
