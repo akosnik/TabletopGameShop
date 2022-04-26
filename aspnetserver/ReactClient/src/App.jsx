@@ -2,6 +2,7 @@ import './App.css';
 import BaseNavbar from './Components/Nav/BaseNavbar';
 import LoginForm from './Components/Auth/LoginForm';
 import RegisterForm from './Components/Auth/RegisterForm';
+import AllProducts from './Components/Product/AllProducts';
 import ProductForm from './Components/Product/ProductForm';
 // import { useState, useEffect, useContext } from 'react';
 import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
@@ -25,6 +26,10 @@ function App() {
         
           <Route exact path='/register'>
             <RegisterForm />
+          </Route>
+
+          <Route exact path='/products'>
+            <AllProducts />
           </Route>
 
           <Route exact path='/products/new'>

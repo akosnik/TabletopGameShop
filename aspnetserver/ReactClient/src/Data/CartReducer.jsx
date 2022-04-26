@@ -1,4 +1,4 @@
-// const addToCart = (cartState, addItem) => {
+const addToCart = (cartState, addItem) => {
 //   const existingItem = 
 //   cartState.find((cartItem) => {
 //     cartItem.id === addItem.id
@@ -8,9 +8,9 @@
 //   } else {
 //     return [...cartState, { ...addItem, quantity: 1 }]
 //   }
-// }
+}
 
-// const subFromCart = (cartState, subItem) => {
+const subFromCart = (cartState, subItem) => {
 //   const existingItem =
 //   cartState.find((cartItem) => {
 //     cartItem.id === subItem.id
@@ -20,26 +20,24 @@
 //   } else {
 //     return removeFromCart(cartState, subItem)
 //   }
-// }
+}
 
-// const removeFromCart = (cartState, removeItem) => {
+const removeFromCart = (cartState, removeItem) => {
 //   return cartState.filter((cartItem) => {
 //     cartItem.id !== removeItem.id;
 //   })
-// }
+}
 
-// export const cartReducer = (state, action) => {
-//   switch(action.type){
-//     case "ADD_TO_CART":
-//       return {...state, cart: addToCart(state.cart, action.payload) };
-//     case "SUB_FROM_CART":
-//       return {...state, cart: subFromCart(state.cart, action.payload) }
-//     case "REMOVE_FROM_CART":
-//       return {...state, cart: removeFromCart(state.cart, action.payload) }
-//     // case "CHANGE_CART_QTY":
-//     default:
-//       return state;
-//   }
-// }
-
-
+export const cartReducer = (state, action) => {
+  switch(action.type){
+    case "ADD_TO_CART":
+      return {...state, cart: addToCart(state.cart, action.payload) };
+    case "SUB_FROM_CART":
+      return {...state, cart: subFromCart(state.cart, action.payload) }
+    case "REMOVE_FROM_CART":
+      return {...state, cart: removeFromCart(state.cart, action.payload) }
+    // case "CHANGE_CART_QTY":
+    default:
+      return state;
+  }
+}

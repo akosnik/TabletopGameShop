@@ -8,8 +8,8 @@ function ProductForm () {
   const [userId, setUserId] = useState(1);
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
-  const [inventory, setInventory] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [inventory, setInventory] = useState('');
+  const [price, setPrice] = useState('');
   const [errors, setErrors] = useState('');
 
   function handleSubmit(e) {
@@ -51,7 +51,7 @@ function ProductForm () {
 
     <Form.Group className="mb-3" controlId="formInventory">
       <Form.Label>Inventory</Form.Label>
-      <Form.Control type="number" onChange={(e) => setInventory(e.target.value)} />
+      <Form.Control type="text" onChange={(e) => setInventory(e.target.value)} />
       {errors?.Inventory && errors?.Inventory.map((err) => {
         return (<p key={err} className="text-danger my-0">{err}</p>);
       })}
@@ -60,7 +60,7 @@ function ProductForm () {
   
     <Form.Group className="mb-3" controlId="formPrice">
       <Form.Label>Price</Form.Label>
-      <Form.Control type="decimal" onChange={(e) => setPrice(e.target.value)} />
+      <Form.Control type="text" onChange={(e) => setPrice(e.target.value)} />
       {errors?.Price && errors?.Price.map((err) => {
         return (<p key={err} className="text-danger my-0">{err}</p>);
       })}
