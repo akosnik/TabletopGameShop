@@ -41,8 +41,7 @@ namespace aspnetserver.Persistence.Repository.ProductRepository
             Product product = await _context.Products.FirstOrDefaultAsync((p) => p.Id == productId);
             if (product != null)
             {
-                Product productToSave = _mapper.Map<Product>(editedProduct);
-                product = productToSave;
+                _mapper.Map(editedProduct, product);
                 await _context.SaveChangesAsync();
             }
             return _mapper.Map<GetProductDto>(product);

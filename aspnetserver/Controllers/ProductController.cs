@@ -1,17 +1,4 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-
-//namespace aspnetserver.Controllers
-//{
-//    public class ProductController : Controller
-//    {
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
-//    }
-//}
-
-using aspnetserver.Dtos.Product;
+﻿using aspnetserver.Dtos.Product;
 using aspnetserver.Dtos.User;
 using aspnetserver.Persistence.Models;
 using aspnetserver.Persistence.Repository.ProductRepository;
@@ -45,7 +32,7 @@ namespace aspnetserver.Controllers
             return Ok(ProductList);
         }
 
-        [HttpGet("/view/{productId}")]
+        [HttpGet("{productId}")]
         public async Task<IActionResult> SingleProduct(int productId)
         {
             if (!ModelState.IsValid)
@@ -62,24 +49,24 @@ namespace aspnetserver.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest("bad~~~~~~~~~~~~~~");
+                return BadRequest(ModelState);
             }
 
             GetProductDto product = await _productRepository.AddProduct(productInfo);
             return Ok(product);
         }
 
-        //[HttpPut("{productId}")]
-        //public async Task<IActionResult> EditProduct([FromBody] ProductFormDto productInfo, int productId)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [HttpPut("{productId}")]
+        public async Task<IActionResult> EditProduct([FromBody] ProductFormDto productInfo, int productId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    GetProductDto product = await _productRepository.UpdateProduct(productInfo, productId);
-        //    return Ok(product);
-        //}
+            GetProductDto product = await _productRepository.UpdateProduct(productInfo, productId);
+            return Ok(product);
+        }
 
         //[HttpDelete("{productId}")]
         //public async Task<IActionResult> DeleteProduct(int productId)
