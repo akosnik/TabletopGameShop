@@ -36,14 +36,13 @@ namespace aspnetserver.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegistration)
         {
-            Console.WriteLine("Log");
             if (await _authRepository.EmailExists(userRegistration.Email))
             {
                 ModelState.AddModelError("Email", "Email already exists");
             }
 
             if (!ModelState.IsValid)
-            {
+            { 
                 return BadRequest(ModelState);
             }
 

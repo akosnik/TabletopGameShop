@@ -26,6 +26,7 @@ namespace aspnetserver
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddControllers().AddNewtonsoftJson();
             services.AddDbContext<GameShopDbContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
             services.AddSession();
             services.AddScoped<IAuthRepository, AuthRepository>();

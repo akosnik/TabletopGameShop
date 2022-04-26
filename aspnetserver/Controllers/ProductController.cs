@@ -38,7 +38,7 @@ namespace aspnetserver.Controllers
             _productRepository = productRepository;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> AllProducts()
         {
             List<GetProductDto> ProductList = await _productRepository.GetAllProducts();
@@ -57,17 +57,17 @@ namespace aspnetserver.Controllers
             return Ok(product);
         }
 
-        //[HttpPost()]
-        //public async Task<IActionResult> AddProduct([FromBody] ProductFormDto productInfo)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [HttpPost]
+        public async Task<IActionResult> AddProduct([FromBody] ProductFormDto productInfo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("bad~~~~~~~~~~~~~~");
+            }
 
-        //    GetProductDto product = await _productRepository.AddProduct(productInfo);
-        //    return Ok(product);
-        //}
+            GetProductDto product = await _productRepository.AddProduct(productInfo);
+            return Ok(product);
+        }
 
         //[HttpPut("{productId}")]
         //public async Task<IActionResult> EditProduct([FromBody] ProductFormDto productInfo, int productId)
