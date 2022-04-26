@@ -16,7 +16,7 @@ function Context ({children}){
     .catch(err=>{
       console.log("There was an error retrieving 'Products'", err)
     })
-  },[])
+  }, [])
 
   const [cartState, cartDispatch] = useReducer(cartReducer, {
     cart: []

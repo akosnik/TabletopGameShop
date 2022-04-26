@@ -2,8 +2,9 @@ import './App.css';
 import BaseNavbar from './Components/Nav/BaseNavbar';
 import LoginForm from './Components/Auth/LoginForm';
 import RegisterForm from './Components/Auth/RegisterForm';
-import AllProducts from './Components/Product/AllProducts';
+import ShopProducts from './Components/Product/ShopProducts';
 import ProductForm from './Components/Product/ProductForm';
+import ViewProduct from './Components/Product/ViewProduct';
 // import { useState, useEffect, useContext } from 'react';
 import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -29,10 +30,18 @@ function App() {
           </Route>
 
           <Route exact path='/products'>
-            <AllProducts />
+            <ShopProducts />
+          </Route>
+
+          <Route exact path='/products/:id'>
+            <ViewProduct />
           </Route>
 
           <Route exact path='/products/new'>
+            <ProductForm />
+          </Route>
+
+          <Route exact path='/products/edit/:id'>
             <ProductForm />
           </Route>
 
