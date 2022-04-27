@@ -1,34 +1,31 @@
-const addToCart = (cartState, addItem) => {
-//   const existingItem = 
-//   cartState.find((cartItem) => {
-//     cartItem.id === addItem.id
-//   });
-//   if(existingItem) {
-//     return [...cartState, { ...addItem, quantity: existingItem.quantity + 1 }]
-//   } else {
-//     return [...cartState, { ...addItem, quantity: 1 }]
-//   }
-}
+const cartReducer = (state, action) => {
+ 
+  const addToCart = (cartState, addProduct) => { 
+    const existingProduct = cartState.find((p) => p.id === addProduct.id);
+    if(existingProduct) {
+      return [...cartState, { ...existingProduct, quantity: existingProduct.quantity + 1 }]
+    } else {
+      return [...cartState, { ...addProduct, quantity: 1 }]
+    }
+  }
 
-const subFromCart = (cartState, subItem) => {
-//   const existingItem =
-//   cartState.find((cartItem) => {
-//     cartItem.id === subItem.id
-//   });
-//   if(existingItem?.quantity > 1){
-//     return [...cartState, { ...subItem, quantity: existingItem.quantity - 1 }]
-//   } else {
-//     return removeFromCart(cartState, subItem)
-//   }
-}
 
-const removeFromCart = (cartState, removeItem) => {
-//   return cartState.filter((cartItem) => {
-//     cartItem.id !== removeItem.id;
-//   })
-}
+  const subFromCart = (cartState, subItem) => {
+  //   const existingItem =
+  //   cartState.find((cartItem) => {
+  //     cartItem.id === subItem.id
+  //   });
+  //   if(existingItem?.quantity > 1){
+  //     return [...cartState, { ...subItem, quantity: existingItem.quantity - 1 }]
+  //   } else {
+  //     return removeFromCart(cartState, subItem)
+  //   }
+  }
 
-export const cartReducer = (state, action) => {
+  const removeFromCart = (cartState, removeItem) => {
+    return cartState.filter((cartItem) => cartItem.id !== removeItem.id);
+  }
+
   switch(action.type){
     case "ADD_TO_CART":
       return {...state, cart: addToCart(state.cart, action.payload) };
@@ -41,3 +38,5 @@ export const cartReducer = (state, action) => {
       return state;
   }
 }
+
+export default cartReducer;
