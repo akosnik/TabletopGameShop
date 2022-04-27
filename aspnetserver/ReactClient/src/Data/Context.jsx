@@ -1,11 +1,11 @@
 import axios from "axios";
 import { createContext, useContext, useReducer, useEffect, useState} from "react";
-import {cartReducer} from "./CartReducer"
+import cartReducer from "./CartReducer"
 
 const Cart = createContext();
 
-function Context ({children}){
-  const [products, setProducts] = useState([]);//product api call
+function Context ({ children }){
+  const [products, setProducts] = useState([]);
   
   useEffect(()=>{
     axios.get(`http://localhost:8265/api/products`)

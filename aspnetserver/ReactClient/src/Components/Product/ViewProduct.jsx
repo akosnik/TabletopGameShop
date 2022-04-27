@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -23,15 +23,17 @@ function ViewProduct() {
   }, [])
 
   return (
-    <Card
-    // className="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3"
-    >
-      <Card.Body>
-        <Card.Title>{ product.title }</Card.Title>
-        <Card.Subtitle className="pb-3">${ product.price }</Card.Subtitle>
-        <Card.Text>{ product.summary }</Card.Text>
-      </Card.Body>
-    </Card>
+    <Container className="mx-auto mt-5">
+      <Card
+      className="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3"
+      >
+        <Card.Body>
+          <Card.Title>{ product.title }</Card.Title>
+          <Card.Subtitle className="pb-3">${ product.price }</Card.Subtitle>
+          <Card.Text>{ product.summary }</Card.Text>
+        </Card.Body>
+      </Card>
+    </Container>
   )
 }
 

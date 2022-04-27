@@ -5,10 +5,10 @@ import RegisterForm from './Components/Auth/RegisterForm';
 import ShopProducts from './Components/Product/ShopProducts';
 import ProductForm from './Components/Product/ProductForm';
 import ViewProduct from './Components/Product/ViewProduct';
-// import { useState, useEffect, useContext } from 'react';
+import CartList from './Components/Cart/CartList';
+
 import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
-// import axios from 'axios';
 
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <BaseNavbar />
+        <CartList />
+
         <Switch>
          
           <Route exact path='/login'>
