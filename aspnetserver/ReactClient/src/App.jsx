@@ -5,9 +5,10 @@ import RegisterForm from './Components/Auth/RegisterForm';
 import ShopProducts from './Components/Product/ShopProducts';
 import ProductForm from './Components/Product/ProductForm';
 import ViewProduct from './Components/Product/ViewProduct';
+import Cart from './Components/Cart/Cart';
 import CartList from './Components/Cart/CartList';
 
-import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -19,7 +20,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <BaseNavbar />
-        <CartList />
+        {/* <CartList /> */}
 
         <Switch>
          
@@ -33,6 +34,10 @@ function App() {
 
           <Route exact path='/products'>
             <ShopProducts />
+          </Route>
+
+          <Route exact path='/cart'>
+            <Cart />
           </Route>
 
           <Route exact path='/products/:id'>

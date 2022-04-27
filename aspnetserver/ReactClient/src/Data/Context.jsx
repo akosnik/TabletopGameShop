@@ -1,29 +1,16 @@
-import axios from "axios";
-import { createContext, useContext, useReducer, useEffect, useState} from "react";
+import { createContext, useContext, useReducer } from "react";
 import cartReducer from "./CartReducer"
 
 const Cart = createContext();
 
-function Context ({ children }){
-  const [products, setProducts] = useState([]);
-  
-  useEffect(()=>{
-    axios.get(`http://localhost:8265/api/products`)
-    .then(res=>{
-      setProducts(res.data);
-      console.log("Successfully retrieved 'Products'", res.data)
-    })
-    .catch(err=>{
-      console.log("There was an error retrieving 'Products'", err)
-    })
-  }, [])
+const Context = ({ children }) => {
 
   const [cartState, cartDispatch] = useReducer(cartReducer, {
     cart: []
   });
 
   return (
-    <Cart.Provider value={{ cartState, cartDispatch, products }}>
+    <Cart.Provider value={{ cartState, cartDispatch }}>
       {children}
     </Cart.Provider>
   );

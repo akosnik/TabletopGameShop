@@ -7,10 +7,7 @@ const CartList = () => {
   return(
     <Container>
     { 
-      
-      cart.map((p) => {
-        return (<p key={p.title}>{p.title}</p>)
-      })
+      cart.map((p) => <p key={p.title}>{p.title}</p>)
     }
     </Container>
   )

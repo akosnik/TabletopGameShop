@@ -38,7 +38,8 @@ function AddToCartButton({ props }) {
     <>
     {cart.some((p) => p.id === id)
       ?
-      <Button 
+      <Button
+        className='btn-secondary' 
         style={style}
         onClick = {() => cartDispatch({type: "REMOVE_FROM_CART", payload: props})}
       >-</Button>
