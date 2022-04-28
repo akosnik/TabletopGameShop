@@ -10,21 +10,16 @@ const removeFromCart = (cartState, removeItem) => {
   return cartState.filter((cartItem) => cartItem.id !== removeItem.id);
 }
 
-const setQuantity = (cartState, plusItem, setValue) => {
-  console.log("Ping")
+const setQuantity = (cartState, cartItem) => {
+  cartItem.quantity = parseInt(cartItem.quantity) || 1;
+  if(cartItem.quantity < 1) cartItem.quantity = 1;
+  if(cartItem.quantity > cartItem.inventory) cartItem.quantity = cartItem.inventory;
+  console.log(cartItem.quantity, cartItem.inventory);
+  
+  // return [...cartState, { ...cartItem, quantity: cartItem.quantity }]
   return cartState.filter((p) => 
-    p.id === plusItem.id ? (p.quantity = setValue) : p.quantity
-  );
-
-}
-
-const subQuantity = (cartState, subItem) => {
-  const existingItem =
-  cartState.find((cartItem) => cartItem.id === subItem.id);
-  if(existingItem?.quantity > 0){
-    return [...cartState, {...subItem, quantity: existingItem.quantity - 1 }]
-  }
-  return [...cartState, {...subItem, quantity: 0 }];
+    p.id === cartItem.id ? (p.quantity = cartItem.quantity) : p.quantity
+  ) 
 }
 
 export const cartReducer = (state, action) => {
@@ -35,13 +30,13 @@ export const cartReducer = (state, action) => {
     case "REMOVE_FROM_CART":
       return {...state, cart: removeFromCart(state.cart, action.payload) }
     case "PLUS_QTY":
-      return {...state, cart: state.cart.filter((p) => 
-        p.id === action.payload.id ? (p.quantity = action.payload.quantity + 1) : p.quantity
-      ) }
+      ++action.payload.quantity
+      return {...state, cart: setQuantity(state.cart, action.payload )}
     case "SUB_QTY":
-      return {...state, cart: setQuantity(state.cart, action.payload, action.payload.quantity - 1) }
+      --action.payload.quantity
+      return {...state, cart: setQuantity(state.cart, action.payload )}
     case "SET_QTY":
-      return {...state, cart: setQuantity(state.cart, action.payload, action.payload.quantity) }
+      return {...state, cart: setQuantity(state.cart, action.payload )}
     default:
       return state;
   }

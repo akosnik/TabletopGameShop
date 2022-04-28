@@ -6,17 +6,22 @@ import CartItem from "./CartItem";
 const Cart = () => {
   let { cartState: { cart } } = CartState();
   const [cartTotal, setCartTotal] = useState(0.00);
+  const [quantityPrice, setQuantityPrice] = useState()
+
+  const getCartTotal = () => {
+    let total = 0;
+    cart.forEach((p) => total += (p.price * p.quantity))
+    total = (Math.round((total + Number.EPSILON) * 100) / 100).toFixed(2)
+    setCartTotal(total);
+  }
+
+  const getQuantityPrice = (quantity, price) => {
+    return (quantity * Math.round((price + Number.EPSILON) * 100) / 100).toFixed(2)
+  }
 
   useEffect(() => {
     getCartTotal();
   }, [ cart ])
-
-  const getCartTotal = () => {
-    let total = 0;
-    cart.forEach((p) => total += p.price)
-    setCartTotal(total);
-  }
-
 
   return(
     <Container>
@@ -26,11 +31,11 @@ const Cart = () => {
         <CartItem 
           key={p.title} 
           product={ p }
+          quantityPrice={ getQuantityPrice(p.quantity, p.price) }
         >
           {p.title}
         </CartItem>)
       }
-    
     </Container>
   )
 }
