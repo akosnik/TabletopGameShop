@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container, Row } from "react-bootstrap";
 import {CartState} from "../../Data/Context"
 import ProductCard from "./ProductCard";

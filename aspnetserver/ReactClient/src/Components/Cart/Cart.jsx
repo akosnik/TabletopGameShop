@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { CartState } from "../../Data/Context";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   let { cartState: { cart } } = CartState();
@@ -16,12 +17,20 @@ const Cart = () => {
     setCartTotal(total);
   }
 
+
   return(
     <Container>
-    { 
-      cart.map((p) => <p key={p.title}>{p.title}</p>)
-    }
-    <p>Total: ${cartTotal}</p>
+      <p>Total: ${cartTotal}</p>
+      { 
+        cart.map((p) => 
+        <CartItem 
+          key={p.title} 
+          product={ p }
+        >
+          {p.title}
+        </CartItem>)
+      }
+    
     </Container>
   )
 }

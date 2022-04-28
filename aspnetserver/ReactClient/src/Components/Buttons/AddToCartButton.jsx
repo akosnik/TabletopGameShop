@@ -1,3 +1,4 @@
+import React from 'react'
 import { CartState } from '../../Data/Context';
 import { Button } from 'react-bootstrap';
 
@@ -6,24 +7,6 @@ function AddToCartButton({ props }) {
   const { id, inventory } = props;
 
   let { cartState: { cart }, cartDispatch } = CartState();
-
-  const handleClick = () => {
-    
-    if(cart.some((p) => p.id === id)) {
-      console.log("Remove")
-      cartDispatch({
-        type: "REMOVE_FROM_CART",
-        payload: props
-      })
-    } else {
-      console.log("Add")
-      cartDispatch({
-        type: "ADD_TO_CART",
-        payload: props
-      })
-    }
-    console.log(cart)
-  }
 
   const style = {
     width: "1.5rem",

@@ -40,14 +40,14 @@ function App() {
             <Cart />
           </Route>
 
-          <Route exact path='/products/:id'>
-            <ViewProduct />
-          </Route>
-
           <Route exact path='/products/new'>
             <ProductForm />
           </Route>
 
+          <Route exact path='/products/:id'>
+            <ViewProduct />
+          </Route>
+          
           <Route exact path='/products/edit/:id'>
             <ProductForm />
           </Route>
