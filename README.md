@@ -1,23 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/akosnik/TabletopGameShop">
+  <!-- <a href="https://github.com/akosnik/TabletopGameShop">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
 <h3 align="center">Tabletop Game Shop</h3>
 
   <p align="center">
-    project_description
+    Ecommerce page built with React and .NET
     <br />
     <a href="https://github.com/akosnik/TabletopGameShop"><strong>Explore the docs »</strong></a>
-    <br />
+    <!-- <br />
     <br />
     <a href="https://github.com/akosnik/TabletopGameShop">View Demo</a>
     ·
     <a href="https://github.com/akosnik/TabletopGameShop/issues">Report Bug</a>
     ·
-    <a href="https://github.com/akosnik/TabletopGameShop/issues">Request Feature</a>
+    <a href="https://github.com/akosnik/TabletopGameShop/issues">Request Feature</a> -->
   </p>
 </div>
 
