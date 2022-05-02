@@ -15,8 +15,7 @@ const setQuantity = (cartState, cartItem) => {
   if(cartItem.quantity < 1) cartItem.quantity = 1;
   if(cartItem.quantity > cartItem.inventory) cartItem.quantity = cartItem.inventory;
   console.log(cartItem.quantity, cartItem.inventory);
-  
-  // return [...cartState, { ...cartItem, quantity: cartItem.quantity }]
+ 
   return cartState.filter((p) => 
     p.id === cartItem.id ? (p.quantity = cartItem.quantity) : p.quantity
   ) 

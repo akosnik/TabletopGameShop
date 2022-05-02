@@ -8,7 +8,7 @@
 <h3 align="center">Tabletop Game Shop</h3>
 
   <p align="center">
-    Ecommerce page built with React and .NET
+    Ecommerce site built with React and .NET
     <br />
     <a href="https://github.com/akosnik/TabletopGameShop"><strong>Explore the docs »</strong></a>
     <!-- <br />
