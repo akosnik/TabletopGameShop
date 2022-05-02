@@ -1,9 +1,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <!-- <a href="https://github.com/akosnik/TabletopGameShop">
+  <a href="https://github.com/akosnik/TabletopGameShop">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
+  </a>
 
 <h3 align="center">Tabletop Game Shop</h3>
 
